@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Random Password Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card" role="main">
+    <h1>Random Password Generator</h1>
+    <p class="lead">Quickly create secure passwords. Choose the length and what to include, then generate. Click the copy icon to copy to clipboard.</p>
+
+    <div class="row">
+      <div class="col">
+        <label for="length">Password length</label>
+        <input id="length" type="number" min="4" max="128" value="16" />
+      </div>
+
+      <div class="col">
+        <label>Character sets</label>
+        <div class="checks">
+          <label class="check"><input id="lower" type="checkbox" checked /> <span>Lowercase (a-z)</span></label>
+          <label class="check"><input id="upper" type="checkbox" checked /> <span>Uppercase (A-Z)</span></label>
+          <label class="check"><input id="numbers" type="checkbox" checked /> <span>Numbers (0-9)</span></label>
+          <label class="check"><input id="symbols" type="checkbox" checked /> <span>Symbols (!@#$...)</span></label>
+        </div>
+      </div>
+
+      <div class="col">
+        <label>Extras</label>
+        <div class="checks">
+          <label class="check"><input id="ambiguous" type="checkbox" /> <span>Exclude ambiguous (O,0,l,1)</span></label>
+          <label class="check"><input id="readable" type="checkbox" /> <span>Make more readable (avoid consecutive symbols)</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="generate">Generate</button>
+      <button id="copy" class="ghost">Copy</button>
+      <button id="download" class="ghost">Download .txt</button>
+      <div style="margin-left:auto;text-align:right">
+        <div class="meta">Entropy: <strong id="entropy">—</strong></div>
+        <div class="meter" aria-hidden="true" style="width:220px"><i id="meterbar"></i></div>
+      </div>
+    </div>
+
+    <div class="output" aria-live="polite">
+      <div class="password" id="output">Click "Generate" to create a password</div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <button id="regenerate" class="ghost">Regenerate</button>
+      </div>
+    </div>
+
+    <div class="history" id="history" aria-label="Generated passwords history"></div>
+
+    <div class="footer">Tip: Use length 12+ for strong passwords. You can also download a single password as a .txt file.</div>
+  </main>
+  <script src="./script.js"></script>
+</body>
+</html>
